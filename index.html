@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 100vh;
+        }
+        main {
+            width: 700px;
+            height: 700px;
+            background-color: rgb(11, 173, 209);
+            border-radius: 50%;
+            margin: 50px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            >section {
+                width: 70%;
+                height: 70%;
+                border-radius: 20%;
+                background-color: rgba(231, 228, 228, 0.925);
+                box-shadow: inset 0 -10px rgb(201, 201, 201);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                >div {
+                    width: 70%;
+                    height: 90%;
+                    display: grid;
+                    grid-template-columns: repeat(3, 29%);
+                    grid-template-rows: repeat(7, 12%);
+                    padding: 20px;
+                    padding-top: 30px;
+                    gap: 10px;
+
+                    
+                    >input {
+                        
+                        background-color: rgba(12, 34, 56, 0.795);
+                        grid-column: 1/4;
+                        color: rgba(255, 255, 255, 0.774);
+                        font-size: 30px;
+                    }
+
+                    >button {
+                        background-color: rgb(194, 50, 25);
+                        color: white;
+                        font-size: 40px;
+                        border: none;
+                        border-radius: 10%;
+                        box-shadow: inset 0 -10px rgb(168, 44, 22);
+                        transform-origin: top;
+
+                        &:nth-of-type(3) {
+                            grid-area: 2/3/4/4;
+                            background-color: rgb(9, 148, 97);
+                            box-shadow: inset 0 -10px rgb(7, 124, 81);
+                        }
+
+                        &:last-of-type {
+                            grid-column: 2/4;
+                            background-color: rgb(215, 205, 9);
+                            box-shadow: inset 0 -10px rgb(172, 164, 6);
+                            font-size: 35px;
+                        }
+
+                        &:hover {
+                            height: 98%;
+                            transform: translateY(5px)
+                        }
+                    }
+                }
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <section>
+            <div>
+                <input type="text" name="" id="">
+                <button onclick="para('+')">+</button>
+                <button onclick="para('-')">-</button>
+                <button onclick="para('=')">=</button>
+                <button onclick="para('*')">x</button>
+                <button onclick="para('/')">/</button>
+                
+
+                <button onclick="adad('1')">1</button>
+                <button onclick="adad('2')">2</button>
+                <button onclick="adad('3')">3</button>
+                <button onclick="adad('4')">4</button>
+                <button onclick="adad('5')">5</button>
+                <button onclick="adad('6')">6</button>
+                <button onclick="adad('7')">7</button>
+                <button onclick="adad('8')">8</button>
+                <button onclick="adad('9')">9</button>
+                <button onclick="adad('0')">0</button>
+
+                <button onclick="myRest()">AC</button>
+
+            </div>
+        </section>
+    </main>
+</body>
+
+<script>
+    let inp = document.querySelector('input')
+    let flag = true
+    let num1 = 0
+    let num2 = 0
+    let oldOp = ''
+    // let operator = ''
+
+    function para(op) {
+        if (flag) {
+            num1 = Number(inp.value)
+            oldOp = op
+            flag = false
+            console.log(num1 + "=" + num2);
+            inpRes()
+        } else {
+            num2 = Number(inp.value)
+
+            switch (oldOp) {
+                case '+': num1 += num2; break;
+                case '-': num1 -= num2; break;
+                case '*': num1 *= num2; break;
+                case '/': num1 /= num2; break;
+
+            }
+            oldOp = op
+            console.log(num1 + "=" + num2);
+
+
+            if (oldOp === '=') {
+                inp.value = num1
+                flag = true
+                oldOp = ''
+            } else {
+                
+                inp.value = num1
+                inpRes()
+            }
+
+        }
+    }
+
+    function inpRes() {
+        inp.value = ''
+        inp.focus()
+    }
+    function myRest() {
+        num1 = 0
+        num2 = 0
+        flag = true
+        oldOp = ''
+        inpRes()
+    }
+    function adad(value){
+        inp.value += value;
+        
+    }
+</script>
+
+</html>
