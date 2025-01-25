@@ -1,5 +1,6 @@
 # calculator
-![14](https://github.com/user-attachments/assets/4c50abc5-708c-4431-ae8f-6855c90a20ca)
+![14](https://github.com/user-attachments/assets/c2cbbd80-5f98-4c84-8a28-32defd7427e4)
+
 
 
 
